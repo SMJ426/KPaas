@@ -13,14 +13,21 @@ export default function MainNavigation({ accessToken }) {
         <FindEventSection accessToken={accessToken} />
       </div>
       {!accessToken && (
-        <div className="navItem3">
+        <div className="member-btn">
           <Link href="/user/login" passHref>
-            <button className="navLink">로그인</button>
+            <button className="navLink">회원 로그인</button>
+          </Link>
+        </div>
+      )}
+      {!accessToken && (
+        <div className="teacher-btn">
+          <Link href="/user/teacherlogin" passHref>
+            <button className="navLink">강사 로그인</button>
           </Link>
         </div>
       )}
       {accessToken && (
-        <div className="navItem3">
+        <div className="teacher-btn">
           <SmallProfile accessToken={accessToken} />
         </div>
       )}
@@ -61,10 +68,16 @@ const StyledWrapper = styled.header`
     margin-left: 0px;
   }
 
-  .navItem3 {
+  .teacher-btn {
     font-size: 0.5rem;
     margin-top: 0px;
     margin-left: 90%;
+    position: absolute;
+  }
+    .member-btn {
+    font-size: 0.5rem;
+    margin-top: 0px;
+    margin-left: 82%;
     position: absolute;
   }
 
@@ -101,7 +114,7 @@ const StyledWrapper = styled.header`
       width: 100%;
     }
 
-    .navItem3 {
+    .teacher-btn {
       font-size: 0.5rem;
       margin-top: 0px;
       margin-left: 87%;
